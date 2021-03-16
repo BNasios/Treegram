@@ -1,0 +1,71 @@
+.row.top_row
+  .col-sm-6.user_att
+    %h2= @user.email
+    - if @user.avatar_file_name
+      = image_tag @user.avatar.url(:thumb)
+  .col-sm-6
+    = link_to 'Logout', log_out_path, class: ['btn', 'btn-danger', 'logout_btn']
+    
+  .row
+    = link_to 'Add Photo', new_user_photo_path(@user), class: ['btn', 'btn-success', 'add_photo_btn']
+
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+
+.row.top_row
+  .col-sm-6.user_att
+    = link_to 'Users to Follow', user_follows_path(@user), class: ['btn', 'btn-success', 'users_btn']
+          
+%br/
+%br/  
+
+
+  
+- @us.each  do |user|
+  - sorted_photos=[]
+  - user.photos.each  do |photo|
+    - sorted_photos.append(photo)      
+  - sorted_photos = sorted_photos.sort_by(&:created_at).reverse
+    
+  %br/
+  %br/
+  %br/
+  %br/
+
+  - p_user = User.find(sorted_photos[0].user_id)
+  - uid = p_user.id
+  %div{:id => uid}
+  
+    - if p_user.id != @user.id
+      %h4 #{p_user.email}
+
+    - sorted_photos.each do |photo|
+      -if photo == sorted_photos[0]
+        %img{:src => photo.image.url,:width => "300", :height => "300", :id => "last_image", :alt => photo.title, :photoId => photo.id}
+      -else
+        %img{:src => photo.image.url,:width => "300", :height => "300", :alt => photo.title, :photoId => photo.id}
+    %div{:id => "title"}
+      %h3= ""
+
+  
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

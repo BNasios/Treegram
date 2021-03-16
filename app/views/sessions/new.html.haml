@@ -1,0 +1,12 @@
+%h1 Log In
+= form_tag log_in_path do
+  = label_tag :email
+  = text_field_tag :email
+  = label_tag :password
+  = password_field_tag :password
+  = submit_tag "Log in"
+
+%br/
+.row.top_row
+  .col-sm-6.user_att
+    = link_to 'Go Back', home_path, class: ['btn', 'btn-default']

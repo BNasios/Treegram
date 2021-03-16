@@ -1,0 +1,18 @@
+%h1 Users to Follow
+%br/
+- @users.each  do |user|
+  = form_for :follow, url: user_follows_path do |f|
+    = f.hidden_field :followed_id, value: user.id
+    = f.label user.email    
+    = f.submit 'Follow' 
+
+%br/
+%br/
+%h1 Already Follow
+- @follows.each  do |follow|
+  %h4=  follow.email
+
+%br/
+.row.top_row
+  .col-sm-6.user_att
+    = link_to 'Go Back', user_path(params[:user_id]), class: ['btn', 'btn-default']

@@ -1,0 +1,14 @@
+#photoComments {
+  padding: 2ex;
+  position: fixed;
+  border: 2px double grey;
+  background: wheat;
+}
+
+
+#closeLink{
+  p {
+   white-space: 100;
+  }
+  
+}

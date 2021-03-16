@@ -1,0 +1,17 @@
+%div{:id => "comments", :photoid => @photo.id, :userid => @photo.user_id}
+  %h3 Comments:
+  - @photo.comments.each do |comment|
+    %h4= comment.text
+    %br/
+
+
+
+%br/
+%div{:id=>"area"}
+  %textarea= "connemt" 
+%br/
+.rowtest
+  
+  = link_to 'Submit',"", {:id => 'PostComment'}
+  = link_to 'Close', "", {:id => 'closeLink'}
+

@@ -1,0 +1,14 @@
+%h1 New Comment
+= form_for :comment  , url: create_comment_path do |c|
+  - if @comment.errors.any?
+    - @comment.errors.full_messages.each do |msg|
+      %h4= msg 
+  = c.hidden_field :user_id, value: params[:user_id] 
+  = c.hidden_field :photo_id, value: params[:photo_id] 
+  = c.text_field :text
+  = c.submit 'Post Comment' 
+
+%br/
+.row.top_row
+  .col-sm-6.user_att
+    = link_to 'Go Back', user_path(params[:user_id]), class: ['btn', 'btn-default']
